@@ -43,13 +43,6 @@ function isTabbableRules({
     context,
   });
 
-  if (platform.is.BLINK && platform.is.ANDROID && platform.majorVersion > 42) {
-    // External keyboard support worked fine in CHrome 42, but stopped working in Chrome 45.
-    // The on-screen keyboard does not provide a way to focus the next input element (like iOS does).
-    // That leaves us with no option to advance focus by keyboard, ergo nothing is tabbable (keyboard focusable).
-    return false;
-  }
-
   const frameElement = getFrameElement(element);
   if (frameElement) {
     if (platform.is.WEBKIT && platform.is.IOS) {
